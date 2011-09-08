@@ -2,6 +2,7 @@ source 'http://rubygems.org'
 
 gem "rails", "~> 3.1.0"
 gem 'sqlite3',"~> 1.3.0" 
+gem 'gravatar_image_tag'
 
 group :development do
 gem 'rspec-rails', '2.6.1'
@@ -24,4 +25,5 @@ gem 'webrat', '0.7.1'
 gem 'autotest'
 gem 'autotest-rails-pure'
 gem 'spork'
+gem 'factory_girl_rails'
 end
