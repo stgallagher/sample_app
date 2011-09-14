@@ -7,6 +7,8 @@ gem 'gravatar_image_tag'
 group :development do
 gem 'rspec-rails', '2.6.1'
 gem 'annotate'
+gem 'faker'
+gem 'will_paginate'  
 end
 
 # Gems used only for assets and not required
