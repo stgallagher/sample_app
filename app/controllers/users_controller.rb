@@ -1,5 +1,5 @@
 class UsersController < ApplicationController
- before_filter :authenticate, :only => [:edit, :update] 
+ before_filter :authenticate, :except => [:show, :new, :create] 
  before_filter :correct_user, :only => [:edit, :update]
  before_filter :admin_user,   :only => :destroy
 
@@ -19,8 +19,13 @@ class UsersController < ApplicationController
   end
   
   def index
-    @title = "All users"
-    @users = User.paginate(:page => params[:page]) 
+    if signed_in?
+      @title = "All users"
+      @users = User.paginate(:page => params[:page])
+    else
+      flash[:notice] = "You must sign in to see an index of the users."
+      redirect_to signin_path
+    end 
   end
 
   def update
@@ -51,6 +56,20 @@ class UsersController < ApplicationController
     flash[:success] = "User destroyed."
     redirect_to users_path
   end
+  
+  def following
+    @title = "Following"
+    @user = User.find(params[:id])
+    @users = @user.following.paginate(:page => params[:page])
+    render 'show_follow'
+  end
+
+  def followers
+    @title = "Followers"
+    @user = User.find(params[:id])
+    @users = @user.followers.paginate(:page => params[:page])
+    render 'show_follow'
+  end 
 
   private
 

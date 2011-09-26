@@ -3,12 +3,12 @@ source 'http://rubygems.org'
 gem "rails", "~> 3.1.0"
 gem 'sqlite3',"~> 1.3.0" 
 gem 'gravatar_image_tag'
+gem 'will_paginate'  
 
 group :development do
 gem 'rspec-rails', '2.6.1'
 gem 'annotate'
 gem 'faker'
-gem 'will_paginate'  
 end
 
 # Gems used only for assets and not required
